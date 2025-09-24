@@ -13,6 +13,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;700&display=swap" rel="stylesheet">
     
+    <!-- Swiper.js CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
     <!-- Custom Styles -->
     <style>
         body {
@@ -32,11 +35,28 @@
         .admin-section.active {
             display: block;
         }
-        .loading-bar {
-            height: 4px;
-            background-color: #4f46e5;
-            transition: width 0.3s ease-in-out;
-            width: 0%;
+        /* Swiper custom styles */
+        .swiper-container {
+            width: 100%;
+            padding-top: 20px;
+            padding-bottom: 50px; /* Space for pagination */
+        }
+        .swiper-slide {
+            height: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .swiper-slide > div {
+             width: 100%;
+             height: 100%;
+        }
+        .swiper-pagination-bullet-active {
+            background-color: #4f46e5 !important; /* Indigo color */
+        }
+        .swiper-button-next, .swiper-button-prev {
+            color: #4f46e5 !important;
+            transform: translateY(-50%);
         }
     </style>
 </head>
@@ -47,7 +67,7 @@
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="#" class="flex items-center space-x-2">
                 <img src="https://raw.githubusercontent.com/mm12346/Bangkokphone/refs/heads/main/ChatGPT%20Image%2024%20%E0%B8%81.%E0%B8%A2.%202568%2008_30_14.png" alt="Bangkok Phone Logo" class="h-10 w-auto">
-                <span class="text-2xl font-bold text-indigo-600">Bangkok Phone</span>
+                <span class="text-2xl font-bold text-indigo-600">บางกอกโฟน</span>
             </a>
             <div class="flex items-center space-x-8">
                 <!-- Navigation links -->
@@ -130,31 +150,16 @@
         <section id="portfolio" class="py-16 bg-gray-50">
             <div class="container mx-auto px-6">
                 <h2 class="text-3xl font-bold text-center mb-12">ผลงานการซ่อมของเรา</h2>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Portfolio Item 1 -->
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
-                        <img src="https://placehold.co/600x400/a78bfa/ffffff?text=iPhone+12+Screen" alt="ซ่อมหน้าจอ iPhone 12" class="w-full h-48 object-cover">
-                        <div class="p-4">
-                            <h3 class="font-bold text-lg">เปลี่ยนหน้าจอ iPhone 12</h3>
-                            <p class="text-gray-600 text-sm mt-1">เปลี่ยนหน้าจอแท้ พร้อมรับประกัน อาการจอแตก ทัชสกรีนไม่ได้</p>
-                        </div>
+                <!-- Swiper -->
+                <div class="swiper-container mySwiper">
+                    <div class="swiper-wrapper" id="portfolio-swiper-wrapper">
+                        <!-- Slides will be dynamically injected here -->
                     </div>
-                    <!-- Portfolio Item 2 -->
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
-                        <img src="https://placehold.co/600x400/7dd3fc/ffffff?text=Samsung+Battery" alt="ซ่อมแบต Samsung" class="w-full h-48 object-cover">
-                        <div class="p-4">
-                            <h3 class="font-bold text-lg">เปลี่ยนแบตเตอรี่ Samsung S21</h3>
-                            <p class="text-gray-600 text-sm mt-1">เปลี่ยนแบตเตอรี่ใหม่ แก้ปัญหาแบตเสื่อม แบตหมดไว</p>
-                        </div>
-                    </div>
-                    <!-- Portfolio Item 3 -->
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
-                        <img src="https://placehold.co/600x400/fca5a5/ffffff?text=iPad+Water+Damage" alt="ซ่อม iPad ตกน้ำ" class="w-full h-48 object-cover">
-                        <div class="p-4">
-                            <h3 class="font-bold text-lg">ซ่อม iPad Air ตกน้ำ</h3>
-                            <p class="text-gray-600 text-sm mt-1">บริการล้างเครื่อง ซ่อมเมนบอร์ดที่เสียหายจากความชื้น</p>
-                        </div>
-                    </div>
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination"></div>
+                    <!-- Add Navigation -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
                 </div>
             </div>
         </section>
@@ -211,18 +216,29 @@
                          </div>
                           <div class="flex items-center space-x-4 mb-4">
                             <svg class="w-6 h-6 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 6.75Z" /></svg>
-                            <p class="text-gray-700">08x-xxx-xxxx</p>
+                            <a href="tel:0988515675" class="text-gray-700 hover:text-indigo-600">098 851 5675</a>
                          </div>
-                         <div class="flex items-center space-x-4 mb-6">
+                         <div class="flex items-center space-x-4 mb-4">
                              <svg class="w-6 h-6 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" /></svg>
-                             <p class="text-gray-700">contact@bangkokphone.com</p>
+                             <a href="mailto:contact@bangkokphone.com" class="text-gray-700 hover:text-indigo-600">contact@bangkokphone.com</a>
                          </div>
+                         <!-- Facebook -->
+                         <div class="flex items-center space-x-4 mb-4">
+                             <svg class="w-6 h-6 text-indigo-500" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.35C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.732 0 1.325-.593 1.325-1.325V1.325C24 .593 23.407 0 22.675 0z"/></svg>
+                             <a href="#" class="text-gray-700 hover:text-indigo-600" target="_blank">รับซ่อมมือถือทุกรุ่น iPhone IPad by.บางกอกโฟน</a>
+                         </div>
+                         <!-- Line -->
+                         <div class="flex items-center space-x-4 mb-6">
+                            <svg class="w-6 h-6 text-indigo-500" fill="currentColor" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><path d="M128,24A104,104,0,0,0,36.18,176.88L24.83,218.42a16,16,0,0,0,19.74,19.74l41.54-11.35A104,104,0,1,0,128,24Zm45.15,128.35a8,8,0,0,1-5.66,2.35h-13.2a8,8,0,0,1-7.23-4.83,49.2,49.2,0,0,0-21.11-21.1,8,8,0,0,1-4.83-7.24v-13.2a8,8,0,0,1,13.66-5.65,65.3,65.3,0,0,1,38.39,38.39A8,8,0,0,1,173.15,152.35ZM112.4,98.8a8,8,0,0,1-5.66,2.35H93.55a8,8,0,0,1-7.24-4.83,49.2,49.2,0,0,0-21.1-21.11,8,8,0,0,1-4.83-7.23V54.8a8,8,0,0,1,13.66-5.65,65.3,65.3,0,0,1,38.39,38.39A8,8,0,0,1,112.4,98.8Z"></path></svg>
+                            <a href="#" class="text-gray-700 hover:text-indigo-600" target="_blank">Line ID: @bangkokphone</a>
+                         </div>
+
                          <h4 class="font-bold text-lg mb-2">เวลาทำการ</h4>
-                         <p class="text-gray-700">จันทร์ - เสาร์: 10:00 - 20:00 น.</p>
-                         <p class="text-gray-700">อาทิตย์: หยุดทำการ</p>
+                         <p class="text-gray-700">จันทร์ - อาทิตย์: 09:00 - 21:00 น.</p>
+                        
                      </div>
                      <!-- Map -->
-                     <div class="bg-gray-200 rounded-lg flex items-center justify-center overflow-hidden">
+                     <div class="bg-gray-200 rounded-lg flex items-center justify-center overflow-hidden min-h-[300px] md:min-h-0">
                          <iframe src="https://www.google.com/maps?q=15.679657138134068,100.10215112261331&z=17&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                      </div>
                  </div>
@@ -273,7 +289,7 @@
 
     <!-- Admin Modal (Dashboard) -->
     <div id="admin-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50 p-4 overflow-y-auto">
-        <div class="bg-white p-8 rounded-lg shadow-xl w-full max-w-2xl">
+        <div class="bg-white p-8 rounded-lg shadow-xl w-full max-w-3xl">
             <div class="flex justify-between items-center border-b pb-4 mb-6">
                 <h3 class="text-2xl font-bold">แผงควบคุมสำหรับผู้ดูแลระบบ</h3>
                 <button id="close-admin-modal-btn" class="text-gray-500 hover:text-gray-800 text-3xl leading-none">&times;</button>
@@ -287,6 +303,9 @@
                 <button id="manage-tab" class="py-2 px-4 text-sm font-medium focus:outline-none text-gray-500 hover:text-gray-700">
                     จัดการสินค้า
                 </button>
+                <button id="portfolio-tab" class="py-2 px-4 text-sm font-medium focus:outline-none text-gray-500 hover:text-gray-700">
+                    จัดการผลงาน
+                </button>
             </div>
 
             <!-- Add Product Section -->
@@ -299,20 +318,11 @@
                     <input type="text" name="color" placeholder="สี" class="w-full mb-3 px-4 py-2 border rounded-lg" required>
                     <textarea name="description" placeholder="รายละเอียดเพิ่มเติม" class="w-full mb-3 px-4 py-2 border rounded-lg" rows="3" required></textarea>
                     
-                    <!-- Image Upload Section -->
                     <label class="block text-gray-700 font-medium mb-2">รูปภาพสินค้า</label>
                     <div class="mb-3">
-                         <input type="file" id="image-upload-input" accept="image/*" class="w-full text-sm text-gray-500
-                            file:mr-4 file:py-2 file:px-4
-                            file:rounded-lg file:border-0
-                            file:text-sm file:font-semibold
-                            file:bg-indigo-50 file:text-indigo-700
-                            hover:file:bg-indigo-100
-                            cursor-pointer
-                        ">
+                         <input type="file" id="image-upload-input" accept="image/*" class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100 cursor-pointer">
                     </div>
 
-                    <!-- Image Preview -->
                     <img id="image-preview" src="" alt="Image Preview" class="w-full h-48 object-cover rounded-lg mb-4 hidden bg-gray-100">
                     
                     <button type="submit" id="add-phone-submit-btn" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-lg">
@@ -329,6 +339,36 @@
                 <div id="admin-loading-spinner" class="text-center mt-6 hidden">
                      <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-500 mx-auto"></div>
                      <p class="mt-2 text-gray-600">กำลังโหลดรายการสินค้า...</p>
+                </div>
+            </div>
+            
+            <!-- Manage Portfolio Section -->
+            <div id="portfolio-section" class="admin-section pt-6">
+                <h4 class="text-lg font-bold mb-4">เพิ่มผลงานใหม่</h4>
+                <form id="add-portfolio-form">
+                    <input type="text" name="title" placeholder="หัวข้อ (เช่น เปลี่ยนหน้าจอ iPhone 12)" class="w-full mb-3 px-4 py-2 border rounded-lg" required>
+                    <textarea name="description" placeholder="คำอธิบายสั้นๆ" class="w-full mb-3 px-4 py-2 border rounded-lg" rows="2" required></textarea>
+                    
+                    <label class="block text-gray-700 font-medium mb-2">รูปภาพผลงาน</label>
+                    <div class="mb-3">
+                         <input type="file" id="portfolio-image-upload-input" accept="image/*" class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100 cursor-pointer" required>
+                    </div>
+                    <img id="portfolio-image-preview" src="" alt="Portfolio Image Preview" class="w-full h-48 object-cover rounded-lg mb-4 hidden bg-gray-100">
+                    
+                    <button type="submit" id="add-portfolio-submit-btn" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-lg">
+                        เพิ่มผลงาน
+                    </button>
+                </form>
+                
+                <hr class="my-8">
+                
+                <h4 class="text-lg font-bold mb-4">รายการผลงานปัจจุบัน</h4>
+                <div id="admin-portfolio-list" class="space-y-4 max-h-64 overflow-y-auto">
+                    <!-- Portfolio items will be dynamically populated here -->
+                </div>
+                <div id="admin-portfolio-spinner" class="text-center mt-6 hidden">
+                     <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-500 mx-auto"></div>
+                     <p class="mt-2 text-gray-600">กำลังโหลดรายการผลงาน...</p>
                 </div>
             </div>
         </div>
@@ -370,11 +410,11 @@
         <p id="notification-message"></p>
     </div>
     
-    <!-- ADDED: Confirmation Modal for Deletion -->
-    <div id="confirmation-modal" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center hidden z-50 p-4">
+    <!-- Confirmation Modal for Deletion -->
+    <div id="confirmation-modal" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center hidden z-[60] p-4">
         <div class="bg-white p-8 rounded-lg shadow-xl w-full max-w-sm text-center transform transition-all duration-300 scale-95 opacity-0" id="confirmation-modal-content">
             <h3 class="text-xl font-bold mb-4 text-gray-800">ยืนยันการลบ</h3>
-            <p class="text-gray-600 text-sm mb-8">คุณแน่ใจหรือไม่ว่าต้องการลบสินค้านี้? การกระทำนี้ไม่สามารถย้อนกลับได้</p>
+            <p class="text-gray-600 text-sm mb-8">คุณแน่ใจหรือไม่ว่าต้องการลบรายการนี้? การกระทำนี้ไม่สามารถย้อนกลับได้</p>
             <div class="flex justify-center space-x-4">
                 <button id="confirm-delete-btn" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-6 rounded-lg transition-colors">
                     ยืนยัน
@@ -393,6 +433,9 @@
             <p>&copy; 2025 Bangkok Phone. สงวนลิขสิทธิ์.</p>
         </div>
     </footer>
+
+    <!-- Swiper.js JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
     <script>
         // --- Navigation Logic ---
@@ -434,8 +477,10 @@
         // Tab elements
         const addTab = document.getElementById('add-tab');
         const manageTab = document.getElementById('manage-tab');
+        const portfolioTab = document.getElementById('portfolio-tab');
         const addSection = document.getElementById('add-section');
         const manageSection = document.getElementById('manage-section');
+        const portfolioSection = document.getElementById('portfolio-section');
         
         // Image Upload Elements
         const imageUploadInput = document.getElementById('image-upload-input');
@@ -460,11 +505,19 @@
         const notification = document.getElementById('notification');
         const notificationMessage = document.getElementById('notification-message');
 
-        // Confirmation Modal Elements (NEW)
+        // Confirmation Modal Elements
         const confirmationModal = document.getElementById('confirmation-modal');
         const confirmationModalContent = document.getElementById('confirmation-modal-content');
         const confirmDeleteBtn = document.getElementById('confirm-delete-btn');
         const cancelDeleteBtn = document.getElementById('cancel-delete-btn');
+
+        // Portfolio Admin Elements
+        const addPortfolioForm = document.getElementById('add-portfolio-form');
+        const portfolioImageUploadInput = document.getElementById('portfolio-image-upload-input');
+        const portfolioImagePreview = document.getElementById('portfolio-image-preview');
+        const adminPortfolioList = document.getElementById('admin-portfolio-list');
+        const adminPortfolioSpinner = document.getElementById('admin-portfolio-spinner');
+        const portfolioSwiperWrapper = document.getElementById('portfolio-swiper-wrapper');
 
         // --- Cloudinary Config (replace with your own) ---
         const CLOUDINARY_CLOUD_NAME = 'dsqvhurw9'; // **กรุณาใส่ Cloud Name ของคุณที่นี่**
@@ -472,7 +525,9 @@
 
         // Global variables
         let selectedFile = null;
-        let itemToDeleteId = null; // To store ID for deletion confirmation
+        let selectedPortfolioFile = null;
+        let itemToDeleteId = null;
+        let itemToDeleteType = null;
 
         // --- Fetch and Display Phones (Public View) ---
         async function fetchPhones() {
@@ -492,7 +547,7 @@
         }
 
         function renderPhones(phones) {
-            productListings.innerHTML = ''; // Clear existing listings
+            productListings.innerHTML = ''; 
             const availablePhones = phones.filter(p => p.Status === 'Available');
 
             if (availablePhones.length === 0) {
@@ -501,7 +556,6 @@
             }
 
             availablePhones.forEach(phone => {
-                // Defensive coding: provide default empty strings if properties are missing
                 const description = phone.description || '';
                 const brand = phone.brand || 'N/A';
                 const model = phone.model || '';
@@ -630,7 +684,8 @@
                 closeLoginModal();
                 adminModal.classList.remove('hidden');
                 adminModal.classList.add('flex');
-                fetchAdminProducts();
+                // On login, set default tab to 'add'
+                switchTab('add'); 
             } else {
                 loginErrorMsg.textContent = 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง!';
                 loginErrorMsg.classList.remove('hidden');
@@ -643,26 +698,29 @@
         });
         
         // --- Admin Tabs Logic ---
-        addTab.addEventListener('click', () => {
-            addTab.classList.add('border-indigo-500', 'text-indigo-600');
-            addTab.classList.remove('text-gray-500');
-            manageTab.classList.remove('border-indigo-500', 'text-indigo-600');
-            manageTab.classList.add('text-gray-500');
-            addSection.classList.add('active');
-            manageSection.classList.remove('active');
-        });
+        function switchTab(activeTab) {
+            const tabs = { add: addTab, manage: manageTab, portfolio: portfolioTab };
+            const sections = { add: addSection, manage: manageSection, portfolio: portfolioSection };
 
-        manageTab.addEventListener('click', () => {
-            manageTab.classList.add('border-indigo-500', 'text-indigo-600');
-            manageTab.classList.remove('text-gray-500');
-            addTab.classList.remove('border-indigo-500', 'text-indigo-600');
-            addTab.classList.add('text-gray-500');
-            manageSection.classList.add('active');
-            addSection.classList.remove('active');
-            fetchAdminProducts();
-        });
+            Object.values(tabs).forEach(tab => {
+                tab.classList.remove('border-indigo-500', 'text-indigo-600');
+                tab.classList.add('text-gray-500', 'hover:text-gray-700');
+            });
+            Object.values(sections).forEach(section => section.classList.remove('active'));
 
-        // --- Image Preview Logic ---
+            tabs[activeTab].classList.add('border-indigo-500', 'text-indigo-600');
+            tabs[activeTab].classList.remove('text-gray-500', 'hover:text-gray-700');
+            sections[activeTab].classList.add('active');
+
+            if (activeTab === 'manage') fetchAdminProducts();
+            else if (activeTab === 'portfolio') fetchAdminPortfolio();
+        }
+
+        addTab.addEventListener('click', () => switchTab('add'));
+        manageTab.addEventListener('click', () => switchTab('manage'));
+        portfolioTab.addEventListener('click', () => switchTab('portfolio'));
+
+        // --- Image Preview Logic (Products) ---
         imageUploadInput.addEventListener('change', (e) => {
             const file = e.target.files[0];
             if (!file) {
@@ -709,18 +767,15 @@
             submitButton.textContent = 'กำลังอัปโหลดรูปภาพ...';
 
             try {
-                // 1. Upload image to Cloudinary
                 const imageUrl = await uploadFileToCloudinary(selectedFile);
                 submitButton.textContent = 'กำลังเพิ่มสินค้า...';
                 
-                // 2. Prepare data for Google Apps Script
                 const formData = new FormData(addPhoneForm);
                 const data = Object.fromEntries(formData.entries());
                 data.action = 'addPhone';
                 data.Status = 'Available';
                 data.imageUrl = imageUrl;
 
-                // 3. Send data to Google Apps Script
                 const response = await fetch(SCRIPT_URL, { 
                     method: 'POST', 
                     headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
@@ -734,7 +789,7 @@
                     imagePreview.classList.add('hidden');
                     imagePreview.src = '';
                     selectedFile = null;
-                    fetchPhones(); // Refresh public phone list
+                    fetchPhones();
                 } else {
                     throw new Error(result.message || 'เกิดข้อผิดพลาดในการเพิ่มสินค้า');
                 }
@@ -806,8 +861,8 @@
             const id = button.dataset.id;
             
             if (button.classList.contains('delete-btn')) {
-                // REPLACED confirm() with custom modal
                 itemToDeleteId = id;
+                itemToDeleteType = 'product';
                 showConfirmationModal();
             } else if (button.classList.contains('update-status-btn')) {
                 const currentStatus = button.dataset.status;
@@ -815,35 +870,6 @@
                 await updatePhoneStatus(id, newStatus);
             }
         });
-
-        // --- NEW: Confirmation Modal Logic ---
-        function showConfirmationModal() {
-            confirmationModal.classList.remove('hidden');
-            setTimeout(() => confirmationModalContent.classList.remove('scale-95', 'opacity-0'), 10);
-        }
-
-        function hideConfirmationModal() {
-            confirmationModalContent.classList.add('scale-95', 'opacity-0');
-            setTimeout(() => {
-                confirmationModal.classList.add('hidden');
-                itemToDeleteId = null; // Reset the ID
-            }, 300);
-        }
-
-        confirmDeleteBtn.addEventListener('click', async () => {
-            if (itemToDeleteId) {
-                await deletePhone(itemToDeleteId);
-            }
-            hideConfirmationModal();
-        });
-
-        cancelDeleteBtn.addEventListener('click', hideConfirmationModal);
-        confirmationModal.addEventListener('click', (e) => {
-            if (e.target === confirmationModal) {
-                hideConfirmationModal();
-            }
-        });
-
 
         async function deletePhone(id) {
             try {
@@ -886,11 +912,218 @@
                 showNotification(`เกิดข้อผิดพลาด: ${error.message}`, 'error');
             }
         }
+
+        // --- Portfolio Management ---
+
+        // Image Preview Logic (Portfolio)
+        portfolioImageUploadInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (!file) {
+                selectedPortfolioFile = null;
+                portfolioImagePreview.classList.add('hidden');
+                portfolioImagePreview.src = '';
+                return;
+            }
+            selectedPortfolioFile = file;
+            portfolioImagePreview.src = URL.createObjectURL(file);
+            portfolioImagePreview.classList.remove('hidden');
+        });
+
+        // Add Portfolio Form Submission
+        addPortfolioForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            if (!selectedPortfolioFile) {
+                showNotification('กรุณาเลือกรูปภาพสำหรับผลงาน', 'error');
+                return;
+            }
+            const submitButton = document.getElementById('add-portfolio-submit-btn');
+            submitButton.disabled = true;
+            submitButton.textContent = 'กำลังอัปโหลดรูปภาพ...';
+
+            try {
+                const imageUrl = await uploadFileToCloudinary(selectedPortfolioFile);
+                submitButton.textContent = 'กำลังเพิ่มผลงาน...';
+                
+                const formData = new FormData(addPortfolioForm);
+                const data = Object.fromEntries(formData.entries());
+                data.action = 'addPortfolio';
+                data.imageUrl = imageUrl;
+
+                const response = await fetch(SCRIPT_URL, { 
+                    method: 'POST', 
+                    headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
+                    body: JSON.stringify(data) 
+                });
+                const result = await response.json();
+
+                if (result.success) {
+                    showNotification('เพิ่มผลงานสำเร็จ!', 'success');
+                    addPortfolioForm.reset();
+                    portfolioImagePreview.classList.add('hidden');
+                    portfolioImagePreview.src = '';
+                    selectedPortfolioFile = null;
+                    fetchPortfolio();
+                    fetchAdminPortfolio();
+                } else {
+                    throw new Error(result.message || 'เกิดข้อผิดพลาดในการเพิ่มผลงาน');
+                }
+            } catch (error) {
+                console.error('Error adding portfolio:', error);
+                showNotification(`เกิดข้อผิดพลาด: ${error.message}`, 'error');
+            } finally {
+                 submitButton.disabled = false;
+                 submitButton.textContent = 'เพิ่มผลงาน';
+            }
+        });
+
+        // Fetch and Render Admin Portfolio List
+        async function fetchAdminPortfolio() {
+            adminPortfolioSpinner.classList.remove('hidden');
+            adminPortfolioList.innerHTML = '';
+            try {
+                const response = await fetch(`${SCRIPT_URL}?action=getPortfolio`);
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                const items = await response.json();
+                renderAdminPortfolio(items);
+            } catch (error) {
+                console.error('Error fetching admin portfolio:', error);
+                adminPortfolioList.innerHTML = `<p class="text-red-500 text-center">เกิดข้อผิดพลาดในการโหลดรายการผลงาน</p>`;
+            } finally {
+                adminPortfolioSpinner.classList.add('hidden');
+            }
+        }
+
+        function renderAdminPortfolio(items) {
+            adminPortfolioList.innerHTML = '';
+            if (items.length === 0) {
+                adminPortfolioList.innerHTML = `<p class="text-gray-500 text-center">ยังไม่มีผลงานในระบบ</p>`;
+                return;
+            }
+            items.forEach(item => {
+                const title = item.Title || 'N/A';
+                const listItem = document.createElement('div');
+                listItem.className = 'bg-gray-50 p-4 rounded-lg flex items-center justify-between shadow-sm';
+                listItem.innerHTML = `
+                    <div class="flex-1 min-w-0 mr-4">
+                        <h4 class="font-bold text-md truncate">${title}</h4>
+                        <p class="text-sm text-gray-500">ID: ${item.id}</p>
+                    </div>
+                    <button class="delete-portfolio-btn bg-red-500 text-white px-3 py-1 text-sm rounded-lg hover:bg-red-600" data-id="${item.id}">
+                        ลบ
+                    </button>
+                `;
+                adminPortfolioList.appendChild(listItem);
+            });
+        }
+        
+        // Delete Portfolio Action
+        adminPortfolioList.addEventListener('click', (e) => {
+            const button = e.target.closest('.delete-portfolio-btn');
+            if (button) {
+                itemToDeleteId = button.dataset.id;
+                itemToDeleteType = 'portfolio';
+                showConfirmationModal();
+            }
+        });
+
+        async function deletePortfolio(id) {
+            try {
+                const response = await fetch(SCRIPT_URL, { 
+                    method: 'POST', 
+                    headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
+                    body: JSON.stringify({ action: 'deletePortfolio', id: id }) 
+                });
+                const result = await response.json();
+                if (result.success) {
+                    showNotification('ลบผลงานสำเร็จ!', 'success');
+                    fetchPortfolio();
+                    fetchAdminPortfolio();
+                } else {
+                    throw new Error(result.message || 'เกิดข้อผิดพลาดในการลบ');
+                }
+            } catch (error) {
+                console.error('Error deleting portfolio:', error);
+                showNotification(`เกิดข้อผิดพลาด: ${error.message}`, 'error');
+            }
+        }
+
+        // --- Dynamic Portfolio Slider (Public) ---
+        async function fetchPortfolio() {
+            try {
+                const response = await fetch(`${SCRIPT_URL}?action=getPortfolio`);
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                const portfolioItems = await response.json();
+                renderPortfolioSlider(portfolioItems);
+            } catch (error) {
+                console.error('Error fetching portfolio:', error);
+                portfolioSwiperWrapper.innerHTML = `<p class="text-red-500 text-center w-full">เกิดข้อผิดพลาดในการโหลดผลงาน</p>`;
+            }
+        }
+
+        function renderPortfolioSlider(items) {
+            portfolioSwiperWrapper.innerHTML = '';
+            if (items.length === 0) {
+                portfolioSwiperWrapper.innerHTML = `<p class="text-gray-500 text-center w-full">ยังไม่มีผลงานการซ่อมในขณะนี้</p>`;
+                return;
+            }
+            items.forEach(item => {
+                const title = item.Title || 'ผลงานการซ่อม';
+                const description = item.Description || 'ไม่มีคำอธิบาย';
+                const imageUrl = item.ImageURL || 'https://placehold.co/600x400/e2e8f0/64748b?text=Image+Not+Available';
+
+                const slide = `
+                <div class="swiper-slide">
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden h-full">
+                        <img src="${imageUrl}" alt="${title}" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h3 class="font-bold text-lg">${title}</h3>
+                            <p class="text-gray-600 text-sm mt-1">${description}</p>
+                        </div>
+                    </div>
+                </div>
+                `;
+                portfolioSwiperWrapper.innerHTML += slide;
+            });
+            if (swiper) swiper.update();
+        }
+
+        // --- Confirmation Modal Logic ---
+        function showConfirmationModal() {
+            confirmationModal.classList.remove('hidden');
+            setTimeout(() => confirmationModalContent.classList.remove('scale-95', 'opacity-0'), 10);
+        }
+
+        function hideConfirmationModal() {
+            confirmationModalContent.classList.add('scale-95', 'opacity-0');
+            setTimeout(() => {
+                confirmationModal.classList.add('hidden');
+                itemToDeleteId = null; 
+                itemToDeleteType = null;
+            }, 300);
+        }
+
+        confirmDeleteBtn.addEventListener('click', async () => {
+            if (itemToDeleteId && itemToDeleteType) {
+                if (itemToDeleteType === 'product') {
+                    await deletePhone(itemToDeleteId);
+                } else if (itemToDeleteType === 'portfolio') {
+                    await deletePortfolio(itemToDeleteId);
+                }
+            }
+            hideConfirmationModal();
+        });
+
+        cancelDeleteBtn.addEventListener('click', hideConfirmationModal);
+        confirmationModal.addEventListener('click', (e) => {
+            if (e.target === confirmationModal) {
+                hideConfirmationModal();
+            }
+        });
         
         // --- Utility ---
         function showNotification(message, type = 'success') {
             notificationMessage.textContent = message;
-            notification.className = 'fixed bottom-5 right-5 text-white py-2 px-5 rounded-lg shadow-xl transition-opacity duration-300 z-50'; // Added z-index
+            notification.className = 'fixed bottom-5 right-5 text-white py-2 px-5 rounded-lg shadow-xl transition-opacity duration-300 z-[70]';
             if (type === 'error') {
                 notification.classList.add('bg-red-500');
             } else {
@@ -903,9 +1136,30 @@
             }, 4000);
         }
         
+        // --- Swiper Initialization ---
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            breakpoints: {
+                640: { slidesPerView: 2, spaceBetween: 20 },
+                1024: { slidesPerView: 3, spaceBetween: 30 },
+            },
+        });
+
         // --- Initial Load ---
-        document.addEventListener('DOMContentLoaded', fetchPhones);
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchPhones();
+            fetchPortfolio();
+        });
     </script>
 </body>
 </html>
-
